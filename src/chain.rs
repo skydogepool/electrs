@@ -31,6 +31,8 @@ pub enum Network {
     Regtest,
     #[cfg(not(feature = "liquid"))]
     Signet,
+    #[cfg(not(feature = "liquid"))]
+    Skydoge,
 
     #[cfg(feature = "liquid")]
     Liquid,
@@ -135,12 +137,15 @@ pub fn bitcoin_genesis_hash(network: BNetwork) -> bitcoin::BlockHash {
             genesis_block(BNetwork::Regtest).block_hash();
         static ref SIGNET_GENESIS: bitcoin::BlockHash =
             genesis_block(BNetwork::Signet).block_hash();
+        static ref SKYDOGE_GENESIS: skydoge::BlockHash =
+            genesis_block(BNetwork::Skydoge).block_hash();
     }
     match network {
         BNetwork::Bitcoin => *BITCOIN_GENESIS,
         BNetwork::Testnet => *TESTNET_GENESIS,
         BNetwork::Regtest => *REGTEST_GENESIS,
         BNetwork::Signet => *SIGNET_GENESIS,
+        BNetwork::Skydoge => *SKYDOGE_GENESIS,
     }
 }
 
@@ -173,6 +178,8 @@ impl From<&str> for Network {
             "regtest" => Network::Regtest,
             #[cfg(not(feature = "liquid"))]
             "signet" => Network::Signet,
+            #[cfg(not(feature = "liquid"))]
+            "skydoge" => Network::Skydoge,
 
             #[cfg(feature = "liquid")]
             "liquid" => Network::Liquid,
@@ -194,6 +201,7 @@ impl From<Network> for BNetwork {
             Network::Testnet => BNetwork::Testnet,
             Network::Regtest => BNetwork::Regtest,
             Network::Signet => BNetwork::Signet,
+            Network::Skydoge => BNetwork::Skydoge,
         }
     }
 }
@@ -206,6 +214,7 @@ impl From<BNetwork> for Network {
             BNetwork::Testnet => Network::Testnet,
             BNetwork::Regtest => Network::Regtest,
             BNetwork::Signet => Network::Signet,
+            BNetwork::Skydoge => Network::Skydoge,
         }
     }
 }
