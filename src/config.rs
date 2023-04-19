@@ -245,13 +245,14 @@ impl Config {
 
         let default_daemon_port = match network_type {
             #[cfg(not(feature = "liquid"))]
-            Network::Bitcoin => 8332,
+            Network::Skydoge => 8332,
             #[cfg(not(feature = "liquid"))]
             Network::Testnet => 18332,
             #[cfg(not(feature = "liquid"))]
             Network::Regtest => 18443,
             #[cfg(not(feature = "liquid"))]
             Network::Signet => 38332,
+
 
             #[cfg(feature = "liquid")]
             Network::Liquid => 7041,
@@ -260,7 +261,7 @@ impl Config {
         };
         let default_electrum_port = match network_type {
             #[cfg(not(feature = "liquid"))]
-            Network::Bitcoin => 50001,
+            Network::Skydoge => 50001,
             #[cfg(not(feature = "liquid"))]
             Network::Testnet => 60001,
             #[cfg(not(feature = "liquid"))]
@@ -277,7 +278,7 @@ impl Config {
         };
         let default_http_port = match network_type {
             #[cfg(not(feature = "liquid"))]
-            Network::Bitcoin => 3000,
+            Network::Skydoge => 3000,
             #[cfg(not(feature = "liquid"))]
             Network::Testnet => 3001,
             #[cfg(not(feature = "liquid"))]
@@ -294,7 +295,7 @@ impl Config {
         };
         let default_monitoring_port = match network_type {
             #[cfg(not(feature = "liquid"))]
-            Network::Bitcoin => 4224,
+            Network::Skydoge => 4224,
             #[cfg(not(feature = "liquid"))]
             Network::Testnet => 14224,
             #[cfg(not(feature = "liquid"))]
