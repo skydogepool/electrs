@@ -109,6 +109,7 @@ impl Network {
             "testnet".to_string(),
             "regtest".to_string(),
             "signet".to_string(),
+            "skydoge".to_string(),
         ];
 
         #[cfg(feature = "liquid")]
